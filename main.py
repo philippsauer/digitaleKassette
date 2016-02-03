@@ -51,32 +51,33 @@ class DigitaleKassette(threading.Thread):
         self.logger.debug('device discovery thread started')
 
     def readRFID(self):
-    # endlessly run RFID scanner
+    # run RFID scanner
         sleepTime = config.rfid['sleepTime']
         startFlag = '\x02'
         endFlag = '\x03'   
         
-        UART = serial.Serial('/dev/ttyAMA0', 9600)
-        UART.close()
-        UART.open() 
+        uart = serial.Serial('/dev/ttyAMA0', 9600)
+        uart.close()
+        uart.open() 
         
         while True:
-            ID = ''
-            Zeichen = UART.read()
-            if Zeichen == startFlag:
+            id = ''
+            char = uart.read()
+            if char == startFlag:
                 for Counter in range(13):
-                    Zeichen = UART.read()
-                    ID = ID + str(Zeichen)
-                ID = ID.replace(endFlag, '')              
-                if  ID != self.latestRFIDCard:  
-                    self.setNewRFIDCard (ID)
+                    char = uart.read()
+                    id = id + str(char)
+                id = id.replace(endFlag, '')              
+                if  id != self.latestRFIDCard:  
+                    self.setNewRFIDCard (id)
                 time.sleep(sleepTime)    
                
-    def setNewRFIDCard(self, ID): 
-    # set latest RFID card ID
-        self.latestRFIDCard = ID
-        self.logger.debug('New RFID-Card detected: '+ID)
-        action = self.getAction(ID)
+    def setNewRFIDCard(self, id): 
+    # set latest RFID card id
+        self.latestRFIDCard = id
+        self.logger.debug('New RFID-Card detected: '+id)
+        action = self.getAction(id)
+        
         self.runAction(action)
       
     def getAction(self, id):
@@ -95,18 +96,15 @@ class DigitaleKassette(threading.Thread):
     
     def runAction(self, action):
     # run designated action for current RFID card ID
+        self.logger.debug('Performing action: '+action)
         if action[2] == 'play':
-            self.logger.debug('Performing action: '+action[2])
             #host(6,[0, 'send', self.mediaRendererIndex, 'MediaRenderer', 'AVTransport', 'SetAVTransportURI'], self.conn)
             self.sendAction('set', 'MediaRenderer', 'AVTransport', 'SetAVTransportURI')
-            self.sendAction('play', 'MediaRenderer', 'AVTransport', 'Play')
-            
+            self.sendAction('play', 'MediaRenderer', 'AVTransport', 'Play')          
         elif action[2] == 'pause':
-            self.logger.debug('Performing action: '+action[2])
         elif action[2] == 'next':
-            self.logger.debug('Performing action: '+action[2])
         else:
-            self.logger.error( 'No action given for: '+action)
+            self.logger.error( 'undefined action given')
       
     def discoverDevice(self, modelName):
     
