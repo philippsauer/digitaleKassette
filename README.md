@@ -18,7 +18,7 @@ Zum Einsatz kam das in Python geschriebene Web-Application-Framework Flask (sieh
 
 ### JukeBox
 
-Ermittelt die auszuführende Aktion für die jeweilige RFID-Karte und führt diese aus. (z.B. Abspielen einer bestimmten Ressource, oder Stop des aktuellen Titels) 
+Ermittelt die auszuführende Aktion für die jeweilige RFID-Karte und steuert dessen Ausführung. (z.B. Abspielen einer bestimmten Ressource, oder Stop des aktuellen Titels) 
 
 ### Weitere Programmbestandteile
 
@@ -34,7 +34,7 @@ Wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert welche du
 * Python UPnP Framework: miranda-upnp https://github.com/0x90/miranda-upnp
 * Python Webserver & Webapp Framework: flask http://flask.pocoo.org/
 
-### Sonstiges
+### Sonstige Dateien
 
 * `audio/` - Enthält Systemsounds (error.mp3 im Fehlerfall, beep.mp3 im Erfolgsfall)
 * `static/` - Statische Ressourcen (Bilder, Styles) der Flask-WebApp
