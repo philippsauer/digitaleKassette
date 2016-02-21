@@ -14,15 +14,15 @@ Weitere wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert w
 * `ActionData`: Diese Klasse übernimmt lesende und schreibende Operationen auf die Datei `actionData.csv`, welche Action-Typen (Play, Stop), sowie Webserver-Ressource mit der jeweiligen RFID-Card verknüpft.
 * `RFID-Reader`: Diese Klasse ist die Verbindung zum RFID-Lesegerät an der seriellen Schnittstelle
 * `UPNP-Controller`: Die Digitale Kassette verwendet das Tool 'miranda-upnp' zur UPnP Kommunikation. Dieses wird initial über die Kommandozeile genutzt. `UPNP-Controller.py` verwendet und erweitert einige Methoden aus 'miranda-upnp' und der darin enthaltenen Klasse 'upnp' um die UPnP-Steuerung programmintern und ohne Kommandozeilen-Interaktion zu ermöglichen. 
-* `Wifi`: Diese Klasse kann den Betriebsmodus zwischen 'Accesspoint' und 'einfacher WLAN-Teilnemer' steuern. Hierzu müssen relevante Konfigurations-Dateien im System überschrieben, sowie der Wlan-Adapter hoch- und runtergefahren werden können.
+* `Wifi`: Diese Klasse kann den Betriebsmodus zwischen 'Accesspoint' und 'einfacher WLAN-Teilnehmer' steuern. Hierzu müssen relevante Konfigurations-Dateien im System überschrieben, sowie der Wlan-Adapter hoch- und runtergefahren werden können.
 
 ### Administrations-Interface
 
-Das Administrations-Interface stellt für den Nutzer 2 zentrale Funktionen bereit:
+Das Administrations-Interface stellt für den Nutzer zwei zentrale Funktionen bereit:
 * Das Einrichten einer WLAN-Verbindung
 * Das Hinzufügen von Musikträgern
 
-Zum Einsatz kam das in Python geschriebene Web-Application-Framework Flask (siehe `Webapp.py`). Die einzelnen auszuliefernden HTML Dokumente werden mit Hilfe sog. App-Routes (z.B. `@app.route("/home")`) erstellt und definiert.
+Zum Einsatz kam das in Python geschriebene Web-Application-Framework Flask (siehe `Webapp.py`). Die einzelnen auszuliefernden HTML-Dokumente werden mit Hilfe sog. App-Routes (z.B. `@app.route("/home")`) erstellt und definiert.
 
 ### JukeBox
 
