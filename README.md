@@ -44,7 +44,8 @@ Wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert welche du
 
 ### Autostart
 
-Zum Systemstart wird ein Cronjob ausgeführt und initiiert den Start der Digitalen Kassette. Hierzu wurde mittels `crontab -e`folgender Cronjob für den nutzer Pi eingerichtet: 
+Zum Systemstart wird ein Cronjob ausgeführt. Dieser initiiert den Start der Digitalen Kassette. Hierzu wurde mittels `crontab -e`folgender Cronjob für den Nutzer Pi eingerichtet: 
+
 `@reboot cd /home/pi/kassette/ && sudo /usr/bin/python DigitaleKassette.py > /home/pi/kassette/out.log 2>&1`
 
 Sofern das Logging in der Datei `config.py` eingeschaltet ist werden sämtliche Debug-Ausgaben in die Datei `out.log` geschrieben
