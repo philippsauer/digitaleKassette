@@ -6,15 +6,7 @@ Ziel war die Entwicklung eines Abspielgerätes mit der Haptik früherer Musiktr�
 
 ## Bestandteile
 
-### Überblick
-
-Herzstück stellt die zentrale Conroller-Klasse `DigitaleKassette` dar. Diese stellt die zentralen Ressourcen und Objekte für andere Programmbestandteile bereit und instanziiert diese. Die Hauptbestandteile sind das Administrationsinterface mit Webserver (`WebApp.py`), sowie ein Teil namens Jukebox (`JukeBox.py`) welcher das Abspielen der Musik übernimmt. 
-
-Weitere wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert welche zentral instanziiert werden. Dazu gehören:
-* `ActionData`: Diese Klasse übernimmt lesende und schreibende Operationen auf die Datei `actionData.csv`, welche Action-Typen (Play, Stop), sowie Webserver-Ressource mit der jeweiligen RFID-Card verknüpft.
-* `RFID-Reader`: Diese Klasse ist die Verbindung zum RFID-Lesegerät an der seriellen Schnittstelle
-* `UPNP-Controller`: Die Digitale Kassette verwendet das Tool 'miranda-upnp' zur UPnP Kommunikation. Dieses wird initial über die Kommandozeile genutzt. `UPNP-Controller.py` verwendet und erweitert einige Methoden aus 'miranda-upnp' und der darin enthaltenen Klasse 'upnp' um die UPnP-Steuerung programmintern und ohne Kommandozeilen-Interaktion zu ermöglichen. 
-* `Wifi`: Diese Klasse kann den Betriebsmodus zwischen 'Accesspoint' und 'einfacher WLAN-Teilnehmer' steuern. Hierzu müssen relevante Konfigurations-Dateien im System überschrieben, sowie der Wlan-Adapter hoch- und runtergefahren werden können.
+Herzstück stellt die zentrale Conroller-Klasse `DigitaleKassette` dar. Diese stellt die zentralen Ressourcen und Objekte für andere Programmbestandteile bereit und instanziiert diese. Die Hauptbestandteile sind das Administrationsinterface mit Webserver (`WebApp.py`), sowie ein Teil namens Jukebox (`JukeBox.py`) welcher die Steuerung zum Abspielen der Musik übernimmt. 
 
 ### Administrations-Interface
 
@@ -27,6 +19,14 @@ Zum Einsatz kam das in Python geschriebene Web-Application-Framework Flask (sieh
 ### JukeBox
 
 Ermittelt die auszuführende Aktion für die jeweilige RFID-Karte und führt diese aus. (z.B. Abspielen einer bestimmten Ressource, oder Stop des aktuellen Titels) 
+
+### Weitere Programmbestandteile
+
+Wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert welche durch `DigitaleKassette.py` zentral instanziiert werden. Dazu gehören:
+* `ActionData`: Diese Klasse übernimmt lesende und schreibende Operationen auf die Datei `actionData.csv`, welche Action-Typen (Play, Stop), sowie Webserver-Ressource mit der jeweiligen RFID-Card verknüpft.
+* `RFID-Reader`: Diese Klasse ist die Verbindung zum RFID-Lesegerät an der seriellen Schnittstelle
+* `UPNP-Controller`: Die Digitale Kassette verwendet das Tool 'miranda-upnp' zur UPnP Kommunikation. Dieses wird initial über die Kommandozeile genutzt. `UPNP-Controller.py` verwendet und erweitert einige Methoden aus 'miranda-upnp' und der darin enthaltenen Klasse 'upnp' um die UPnP-Steuerung programmintern und ohne Kommandozeilen-Interaktion zu ermöglichen. 
+* `Wifi`: Diese Klasse kann den Betriebsmodus zwischen 'Accesspoint' und 'einfacher WLAN-Teilnehmer' steuern. Hierzu müssen relevante Konfigurations-Dateien im System überschrieben, sowie der Wlan-Adapter hoch- und runtergefahren werden können.
 
 ### Eingesetzte Software
 
