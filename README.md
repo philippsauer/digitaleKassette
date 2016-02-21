@@ -4,17 +4,34 @@
 
 Ziel war die Entwicklung eines Abspielgerätes mit der Haptik früherer Musikträger, da "Touch"-basierte Interaktion nicht immer für jüngere oder ältere Personen geeignet ist. Hierzu wurde ein neuer Musikträger in Form von RFID-Karten geschaffen. Zusätzlich musste eine Administrations-Oberfläche bereitgestellt werden, welche die Zuordnung des RFID-Chips mit der jeweiligen Ressource ermöglicht. 
 
-## Überblick
+## Bestandteile
 
-Die Software gliedert sich in zwei Hauptbestandteile, dem Administrationsinterface mit Webserver, sowie einem Teil namens "JukeBox", welcher das Abspielen der Musik übernimmt
+Die Software gliedert sich in zwei Hauptbestandteile, dem Administrationsinterface mit Webserver, sowie einem Teil namens `Jukebox` welcher das Abspielen der Musik übernimmt. Herzstück stellt die zentrale Conroller-Klasse `DigitaleKassette` dar. Diese stellt die zentralen Ressourcen und Objekte für andere Programmbestandteile bereit und initiiert diese. 
 
-### 1 - Administrations-Interface
+Hauptfunktionen des Programms wurden in Klassen ausgelagert welche zentral instanziiert werden. Dazu gehören:
+* `ActionData`: Diese Klasse übernimmt lesende und schreibende Operationen auf die Datei `actionData.csv`, welche Action-Typen (Play, Stop), sowie Webserver-Ressource mit der jeweiligen RFID-Card verknüpft.
+* `RFID-Reader`: Diese Klasse ist die Verbindung zum RFID-Lesegerät an der seriellen Schnittstelle
+* `UPNP-Controller`: Die Digitale Kassette verwendet das Tool 'miranda-upnp' zur UPnP Kommunikation. Dieses wird initial über die Kommandozeile genutzt. `UPNP-Controller.py` verwendet und erweitert einige Methoden aus 'miranda-upnp' und der darin enthaltenen Klasse 'upnp' um die UPnP-Steuerung programmintern und ohne Kommandozeilen-Interaktion zu ermöglichen. 
+* `Wifi`
+
+
+Von der Conroller-Klasse `DigitaleKassette` wird zuerst die Erkennung der UPnP Geräte getriggert. 
+
+### Administrations-Interface
+
+Das Administrations-Interface stellt für den Nutzer 2 zentrale Funktionen bereit:
+* Das Einrichten einer WLAN-Verbindung
+* Das Hinzufügen von Musikträgern
 
 
 
-### 2 - Digitale Kassette
+Zum Einsatz kam das in Python geschriebene Web-Application-Framework Flask.
 
-## Zusätzlich eingesetzte Software
+### JukeBox
+
+
+
+### Eingesetzte Software
 
 * MediaRenderer: gmediarender http://gmrender.nongnu.org/
 * Python UPnP Framework: miranda-upnp https://github.com/0x90/miranda-upnp
