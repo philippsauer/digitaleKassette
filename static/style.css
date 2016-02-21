@@ -1,5 +1,5 @@
 html{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     margin: 0px;
     padding: 0px;
     height:100%;
@@ -10,6 +10,7 @@ body{
     padding: 0px;
     min-width: 420px;
     height:100%;
+    display: flex;
 }
 
 #left{
@@ -17,15 +18,15 @@ body{
     display:inline-block;  
     float:left;
     width:20%;
-    min-width: 150px;
+    min-width: 200px;
     height:100%;
-    background-color: #e8e8e8;   
+    background-color: #FF9702;   
 }
 
 #content{
     background-color:white;  
     float:left;
-    margin:10px;
+    margin-left: 20px;
     min-width:250px;
 }
 
@@ -40,10 +41,12 @@ li a {
     color: #000;
     padding: 8px 0 8px 16px;
     text-decoration: none;
+    background: #FFBD60;
+    margin: 3px;
 }
 
 li a:hover {
-    background-color: #555;
+    background-color: #B36900;
     color: white;
 }
 
@@ -53,4 +56,12 @@ li a:hover {
     color: #000;
     padding: 8px 0 16px 0px;
 
+}
+
+#logo {
+    text-align:center;
+}
+
+.error{
+    color: red;
 }

@@ -1,18 +1,23 @@
 general = dict(
     disableLogging = False,
-    actionDataSource = 'actionDB.csv',
+    actionDataSource = 'actionData.csv',
     mediaRendererModelName = 'gmediarender',
     deviceSearchTimeout = 20,
+    rfidLockIntervall = 6,
+    logging_formatter = '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+)
+
+app = dict(
+    host = '0.0.0.0',
+    port = 80,
+    debug = False,
+)
+
+wifi = dict(
+    wpa_conf_file = '/etc/wpa_supplicant/wpa_supplicant.conf',
+    interface_file = '/etc/network/interfaces',
 )
 
 rfid = dict(
     sleepTime = 1,
 )
-
-socket = dict(
-    port = 5005,
-    source = '127.0.0.1',
-    target = '127.0.0.1',
-    bufferSize = 1024,
-)
-
