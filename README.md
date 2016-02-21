@@ -41,7 +41,13 @@ Wichtige Funktionen des Programms wurden in eigene Klassen ausgelagert welche du
 * `templates/` - HTML-Templates (HTML-Header und Navigationselemente) der Flask-WebApp
 * `actionData.csv` - Datentabelle, welche Action-Typen (Play, Stop) und Webserver-Ressource mit der jeweiligen RFID-Card verknüpft
 * `config.py` - Enthält zentrale Konfigurations-Einstellungen in Form von Python-Dictionaries
-* `launcher.sh` - Wird durch einen Cronjob zum Systemstart ausgeführt und initiiert den Start der Digitalen Kassette
+
+### Autostart
+
+Zum Systemstart wird ein Cronjob ausgeführt und initiiert den Start der Digitalen Kassette. Hierzu wurde mittels `crontab -e`folgender Cronjob für den nutzer Pi eingerichtet: 
+`@reboot cd /home/pi/kassette/ && sudo /usr/bin/python DigitaleKassette.py > /home/pi/kassette/out.log 2>&1`
+
+Sofern das Logging in der Datei `config.py` eingeschaltet ist werden sämtliche Debug-Ausgaben in die Datei `out.log` geschrieben
 
 ## Weitere Baustellen
 
